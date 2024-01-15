@@ -1,0 +1,184 @@
+/* login.component.css */
+
+.login {
+  margin-top: 80px;
+  width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  color: #ffffff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden; /* Ensure the overlay doesn't overflow */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.8), rgba(135, 206, 250, 0.8)); /* Light blue semi-transparent gradient overlay */
+  border-radius: 10px;
+  z-index: -1; /* Place the overlay behind other content */
+}
+
+@keyframes shadow-pulse {
+  0% {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(193, 97, 75, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.image {
+  width: 150px;
+  height: 150px;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+img {
+  width: 100%;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.7)
+}
+
+h2 {
+  font-size: 36px;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+form {
+  width: 100%;
+  max-width: 300px;
+  animation: fadeIn 2s infinite alternate;
+  background-color: #ffffff; /* White background for the form */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+label {
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333333;
+  display: block;
+  text-align: left;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc; /* Subtle border */
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+
+input:hover {
+  border-color: #853906;
+}
+
+input:focus {
+  outline: none;
+  border-color: #3498db; /* Light blue focus border */
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  border-radius: 20px;
+}
+
+button {
+  background-color: #3498db; /* Blue button color */
+  color: #ffffff;
+  font-weight: bold;
+  padding: 12px;
+  border: none;
+  border-radius: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover::after {
+  content: "";
+  position: absolute;
+  background: rgba(76, 175, 80, 0.6);
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+button:active {
+  animation: pulse 0.3s ease;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.loading-spinner {
+  display: none; /* Initially hide the spinner */
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid #3498db; /* Blue color for the spinner */
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  margin: 10px auto; /* Adjust the margin as needed */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,36 @@
+/* app.component.css */
+.dashboard, .router {
+  max-width: 1000px;
+  padding: 20px;
+  margin: 10px;
+  background: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: transform 0.3s ease; /* Add a subtle transform animation */
+}
+.main{
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.router{
+  margin: 10px;
+}
+
+
+router-outlet {
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 0.5s ease; /* Smooth opacity transition */
+}
+
+router-outlet.ng-enter {
+  opacity: 0;
+}
+
+router-outlet.ng-enter-active {
+  opacity: 0;
+  transition: opacity 0.5s ease; /* Smooth opacity transition on enter */
+}

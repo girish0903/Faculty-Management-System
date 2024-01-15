@@ -1,0 +1,69 @@
+<!-- books-published.component.html -->
+
+<h2>Books Published</h2>
+
+<form (ngSubmit)="onSearchSubmit()">
+  <label for="searchType">Search By:</label>
+  <select id="searchType" name="searchType" [(ngModel)]="searchType">
+    <option value="bookTitle">Title</option>
+    <option value="date">Date</option>
+  </select>
+
+  <div *ngIf="searchType === 'bookTitle'">
+    <label for="searchTitle">Search by Title:</label>
+    <input type="text" id="searchTitle" name="searchTitle" [(ngModel)]="searchTitle">
+  </div>
+
+  <div *ngIf="searchType === 'date'">
+    <label for="searchDate">Search by Date:</label>
+    <input type="date" id="searchDate" name="searchDate" [(ngModel)]="searchDate">
+  </div>
+
+  <button type="submit">Search</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Book Title</th>
+      <th>Author</th>
+      <th>Publication Date</th>
+      <th>Publisher</th>
+      <th>Remarks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of booksPublished">
+      <td>{{ book.id }}</td>
+      <td>{{ book.bookTitle }}</td>
+      <td>{{ book.author }}</td>
+      <td>{{ book.publicationDate | date }}</td>
+      <td>{{ book.publisher }}</td>
+      <td>{{ book.remarks }}</td>
+      <td>
+        <button (click)="onEditClick(book)">Edit</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<button (click)="onAddClick()">Add</button>
+<form *ngIf="showForm" (ngSubmit)="onFormSubmit()">
+  <label for="bookTitle">Book Name:</label>
+  <input type="text" id="bookTitle" name="bookTitle" [(ngModel)]="formData.bookTitle" required>
+
+  <label for="author">Author:</label>
+  <input type="text" id="author" name="author" [(ngModel)]="formData.author" required>
+
+  <label for="publicationDate">Publication Date:</label>
+  <input type="date" id="publicationDate" name="publicationDate" [(ngModel)]="formData.publicationDate" required>
+  
+  <label for="publisher">Publisher:</label>
+  <input type="text" id="publisher" name="publisher" [(ngModel)]="formData.publisher" required>
+  
+  <label for="remarks">Remarks:</label>
+  <input type="text" id="remarks" name="remarks" [(ngModel)]="formData.remarks" required>
+  <div>
+    <button type="submit">{{ isEditMode ? 'Update' : 'Add' }}</button>
+  </div>
+</form>

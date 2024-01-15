@@ -1,0 +1,60 @@
+<!-- phd-registration.component.html -->
+<h2>PhD. Registration</h2>
+
+<form (ngSubmit)="onSearchSubmit()">
+  <label for="searchType">Search By:</label>
+  <select id="searchType" name="searchType" [(ngModel)]="searchType">
+    <option value="name">Name</option>
+    <option value="date">Date</option>
+  </select>
+
+  <div *ngIf="searchType === 'name'">
+    <label for="searchName">Search by Name:</label>
+    <input type="text" id="searchName" name="searchName" [(ngModel)]="searchName">
+  </div>
+
+  <div *ngIf="searchType === 'date'">
+    <label for="searchDate">Search by Date:</label>
+    <input type="date" id="searchDate" name="searchDate" [(ngModel)]="searchDate">
+  </div>
+
+  <button type="submit">
+    Search
+  </button>
+</form>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Student Name</th>
+      <th>Research Topic</th>
+      <th>Registration Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let registration of phdRegistrations">
+      <td>{{ registration.id }}</td>
+      <td>{{ registration.studentName }}</td>
+      <td>{{ registration.researchTopic }}</td>
+      <td>{{ registration.registrationDate | date }}</td>
+      <td>
+        <button (click)="onEditClick(registration)">Edit</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<button (click)="onAddClick()">Add</button>
+<form *ngIf="showForm" (ngSubmit)="onFormSubmit()">
+  <label for="studentName">Student Name:</label>
+  <input type="text" id="studentName" name="studentName" [(ngModel)]="formData.studentName" required>
+
+  <label for="researchTopic">Research Topic:</label>
+  <input type="text" id="researchTopic" name="researchTopic" [(ngModel)]="formData.researchTopic" required>
+
+  <label for="registrationDate">Registration Date:</label>
+  <input type="date" id="registrationDate" name="registrationDate" [(ngModel)]="formData.registrationDate" required>
+  <div>
+    <button type="submit">{{ isEditMode ? 'Update' : 'Add' }}</button>
+  </div>
+  
+</form>
