@@ -22,6 +22,19 @@
   <button type="submit">Search</button>
 </form>
 
+<button (click)="onAddClick()">Add</button>
+<form *ngIf="showForm" (ngSubmit)="onFormSubmit()">
+  <label for="studentName">Student Name:</label>
+  <input type="text" id="studentName" name="studentName" [(ngModel)]="formData.studentName" required>
+
+  <label for="researchTopic">Research Topic:</label>
+  <input type="text" id="researchTopic" name="researchTopic" [(ngModel)]="formData.researchTopic" required>
+
+  <label for="startDate">Start Date:</label>
+  <input type="date" id="startDate" name="startDate" [(ngModel)]="formData.startDate" required>
+
+  <button type="submit">{{ isEditMode ? 'Update' : 'Add' }}</button>
+</form>
 
 <table>
   <thead>
@@ -43,16 +56,4 @@
   </tbody>
 </table>
 
-<button (click)="onAddClick()">Add</button>
-<form *ngIf="showForm" (ngSubmit)="onFormSubmit()">
-  <label for="studentName">Student Name:</label>
-  <input type="text" id="studentName" name="studentName" [(ngModel)]="formData.studentName" required>
 
-  <label for="researchTopic">Research Topic:</label>
-  <input type="text" id="researchTopic" name="researchTopic" [(ngModel)]="formData.researchTopic" required>
-
-  <label for="startDate">Start Date:</label>
-  <input type="date" id="startDate" name="startDate" [(ngModel)]="formData.startDate" required>
-
-  <button type="submit">{{ isEditMode ? 'Update' : 'Add' }}</button>
-</form>

@@ -22,6 +22,27 @@
   <button type="submit">Search</button>
 </form>
 
+<button (click)="onAddClick()">Add</button>
+<form *ngIf="showForm" (ngSubmit)="onFormSubmit()">
+  <label for="bookTitle">Book Name:</label>
+  <input type="text" id="bookTitle" name="bookTitle" [(ngModel)]="formData.bookTitle" required>
+
+  <label for="author">Author:</label>
+  <input type="text" id="author" name="author" [(ngModel)]="formData.author" required>
+
+  <label for="publicationDate">Publication Date:</label>
+  <input type="date" id="publicationDate" name="publicationDate" [(ngModel)]="formData.publicationDate" required>
+  
+  <label for="publisher">Publisher:</label>
+  <input type="text" id="publisher" name="publisher" [(ngModel)]="formData.publisher" required>
+  
+  <label for="remarks">Remarks:</label>
+  <input type="text" id="remarks" name="remarks" [(ngModel)]="formData.remarks" required>
+  <div>
+    <button type="submit">{{ isEditMode ? 'Update' : 'Add' }}</button>
+  </div>
+</form>
+
 <table>
   <thead>
     <tr>
@@ -47,23 +68,3 @@
     </tr>
   </tbody>
 </table>
-<button (click)="onAddClick()">Add</button>
-<form *ngIf="showForm" (ngSubmit)="onFormSubmit()">
-  <label for="bookTitle">Book Name:</label>
-  <input type="text" id="bookTitle" name="bookTitle" [(ngModel)]="formData.bookTitle" required>
-
-  <label for="author">Author:</label>
-  <input type="text" id="author" name="author" [(ngModel)]="formData.author" required>
-
-  <label for="publicationDate">Publication Date:</label>
-  <input type="date" id="publicationDate" name="publicationDate" [(ngModel)]="formData.publicationDate" required>
-  
-  <label for="publisher">Publisher:</label>
-  <input type="text" id="publisher" name="publisher" [(ngModel)]="formData.publisher" required>
-  
-  <label for="remarks">Remarks:</label>
-  <input type="text" id="remarks" name="remarks" [(ngModel)]="formData.remarks" required>
-  <div>
-    <button type="submit">{{ isEditMode ? 'Update' : 'Add' }}</button>
-  </div>
-</form>
